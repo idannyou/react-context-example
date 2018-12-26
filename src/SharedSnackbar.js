@@ -11,7 +11,7 @@ const SharedSnackbar = () => {
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'left'
+              horizontal: 'center'
             }}
             open={snackbarIsOpen}
             autoHideDuration={2000}

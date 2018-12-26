@@ -10,14 +10,21 @@ const handleOnClick = ({ action, value }) => () => {
   action(`You Clicked ${value}`);
 };
 
-const Button = ({ value }) => {
+const style = {
+  alignSelf: 'center',
+  margin: '1rem',
+  height: '2rem'
+};
+
+const Button = ({ color, value }) => {
   return (
     <SharedSnackbarConsumer>
       {({ openSnackbar }) => {
         return (
           <ButtonCore
-            variant="raised"
-            color="primary"
+            style={style}
+            variant="contained"
+            color={color || 'primary'}
             onClick={handleOnClick({ action: openSnackbar, value })}
           >
             {renderButtonName(value)}

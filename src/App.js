@@ -5,9 +5,10 @@ import Button from './Button';
 class App extends Component {
   render() {
     return (
+      // Provider contains the state of the app
       <SharedSnackBarProvider>
-        <Button value="A" />
-        <Button value="B" />
+        <Button color="primary" value="A" />
+        <Button color="secondary" value="B" />
       </SharedSnackBarProvider>
     );
   }

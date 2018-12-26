@@ -4,6 +4,11 @@ import SharedSnackbar from './SharedSnackbar';
 
 const SharedSnackbarContext = React.createContext();
 
+const style = {
+  display: 'flex',
+  justifyContent: 'center'
+};
+
 export class SharedSnackBarProvider extends React.Component {
   state = {
     isOpen: false,
@@ -21,8 +26,9 @@ export class SharedSnackBarProvider extends React.Component {
   render() {
     const { children } = this.props;
     const { isOpen, message } = this.state;
-    console.log({ children });
+
     return (
+      // Note that Providers and Consumers do not take in Style Props
       <SharedSnackbarContext.Provider
         value={{
           openSnackbar: this.openSnackbar,
@@ -31,8 +37,13 @@ export class SharedSnackBarProvider extends React.Component {
           message
         }}
       >
-        <SharedSnackbar />
-        {children}
+        <div style={style}>
+          {/* The following Components are Consumers; 
+        they will import SharedSnackbarConsumer to access actions
+        and state of the app */}
+          <SharedSnackbar />
+          {children}
+        </div>
       </SharedSnackbarContext.Provider>
     );
   }
